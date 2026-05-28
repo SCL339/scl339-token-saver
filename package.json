@@ -22,12 +22,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuchengle/scl339-token-saver.git"
+    "url": "git+https://github.com/SCL339/scl339-token-saver.git"
   },
   "bugs": {
-    "url": "https://github.com/shuchengle/scl339-token-saver/issues"
+    "url": "https://github.com/SCL339/scl339-token-saver/issues"
   },
-  "homepage": "https://github.com/shuchengle/scl339-token-saver#readme",
+  "homepage": "https://github.com/SCL339/scl339-token-saver#readme",
   "engines": {
     "node": ">=18.0.0"
   },

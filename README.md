@@ -4,8 +4,8 @@
 
 [![npm version](https://img.shields.io/npm/v/scl339-token-saver)](https://www.npmjs.com/package/scl339-token-saver)
 [![npm downloads](https://img.shields.io/npm/dm/scl339-token-saver)](https://www.npmjs.com/package/scl339-token-saver)
-[![GitHub](https://img.shields.io/github/license/shuchengle/scl339-token-saver)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/shuchengle/scl339-token-saver/pulls)
+[![GitHub](https://img.shields.io/github/license/SCL339/scl339-token-saver)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/SCL339/scl339-token-saver/pulls)
 
 ---
 
@@ -104,8 +104,8 @@ The built-in templates are designed to be **minimal yet effective** — focused 
 
 ## 🔗 Related SCL339 Projects
 
-- [**scl339-skill-pack**](https://github.com/shuchengle/scl339-skill-pack) — AI coding assistant skill pack with 12+ skills for Claude Code, Codex, and Cursor
-- [**auto-pr-review-action**](https://github.com/shuchengle/auto-pr-review-action) — Automated PR review GitHub Action for code quality automation
+- [**scl339-skill-pack**](https://github.com/SCL339/scl339-skill-pack) — AI coding assistant skill pack with 12+ skills for Claude Code, Codex, and Cursor
+- [**auto-pr-review-action**](https://github.com/SCL339/auto-pr-review-action) — Automated PR review GitHub Action for code quality automation
 
 ## 🤖 GitHub Action
 
