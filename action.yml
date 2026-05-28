@@ -1,0 +1,59 @@
+name: 'Token Saver'
+description: 'Analyze prompts for LLM token optimization opportunities and generate savings reports'
+author: 'shuchengle'
+branding:
+  icon: 'dollar-sign'
+  color: 'green'
+inputs:
+  files:
+    description: 'Glob pattern of files to analyze (e.g., "prompts/*.md")'
+    required: false
+    default: '**/*.md'
+  threshold:
+    description: 'Minimum token savings percentage to warn about (default: 20)'
+    required: false
+    default: '20'
+  output:
+    description: 'Output report file path'
+    required: false
+    default: 'token-saver-report.json'
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - name: Install token-saver
+      shell: bash
+      run: npm install -g scl339-token-saver
+    - name: Find files to analyze
+      shell: bash
+      id: find-files
+      run: |
+        FILES=$(find . -name "*.md" -not -path "./node_modules/*" | head -20)
+        echo "files<<EOF" >> $GITHUB_OUTPUT
+        echo "$FILES" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+    - name: Analyze files
+      shell: bash
+      run: |
+        THRESHOLD=${{ inputs.threshold }}
+        FAILED=false
+        echo "${{ steps.find-files.outputs.files }}" | while read -r file; do
+          if [ -n "$file" ]; then
+            echo "Analyzing: $file"
+            REPORT_FILE="${file}.token-report.json"
+            token-saver report "$file" "$REPORT_FILE" || true
+            SAVINGS=$(node -e "const r=require('./${REPORT_FILE}'); console.log(r.analysis.savingsPercent)")
+            echo "  Savings: ${SAVINGS}%"
+            if [ "$SAVINGS" -gt "$THRESHOLD" ]; then
+              echo "  ⚠  High optimization potential (${SAVINGS}% > ${THRESHOLD}%)"
+            fi
+          fi
+        done
+    - name: Upload reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: token-saver-reports
+        path: '**/*.token-report.json'
